@@ -139,7 +139,6 @@ function setFirstName(intent, session, callback) {
 
     if (firstName) {
         var myFirstName = myFirstName.value;
-        console.log ("setFirstName -> myFirstName.value: " + myFirstName.value);
         sessionAttributes = createFirstNameAttributes(myFirstName);
         speechOutput = "I now know your name is " + myFirstName;
         repromptText = "Tell me your name so that I can tell something about yourself.";
@@ -152,7 +151,7 @@ function setFirstName(intent, session, callback) {
          buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function createFirstNameAttributes(favoriteColor) {
+function createFirstNameAttributes(myFirstName) {
     return {
         myFirstName: myFirstName
     };
