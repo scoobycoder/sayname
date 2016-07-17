@@ -155,7 +155,6 @@ function setFirstName(intent, session, callback) {
 
 function createFirstNameAttributes(myFirstName) {
     return {
-        console.log ("createFirstNameAttributes -> myFirstName: " + myFirstName);
         myFirstName: myFirstName
     };
 }
