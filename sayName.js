@@ -149,6 +149,8 @@ function setFirstName(intent, session, callback) {
         repromptText = "I'm not sure what your name is, please tell me your name by saying my name is Fred. ";
     }
 
+    console.log ("setFirstName -> sessionAttributes: " + sessionAttributes);
+
     callback(sessionAttributes,
          buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
