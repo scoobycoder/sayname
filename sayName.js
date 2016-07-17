@@ -80,6 +80,8 @@ function onIntent(intentRequest, session, callback) {
     // Dispatch to your skill's intent handlers
     if ("firstName" === intentName) {
         setFirstName(intent, session, callback);
+    } else if ("whatsMyName" === intentName) {
+        whatsMyName(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -157,7 +159,7 @@ function createFirstNameAttributes(myFirstName) {
     };
 }
 
-function getColorFromSession(intent, session, callback) {
+function whatsMyName(intent, session, callback) {
     var myfirstName;
     var repromptText = null;
     var sessionAttributes = {};
