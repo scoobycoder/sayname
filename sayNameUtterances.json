@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "intent": "GetFirstName",
+      "slots": [
+        {
+          "name": "firstName",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    }
+  ]
+}
+
+GetFirstName my name is {firstName}
+GetFirstName i am {firstName}
+GetFirstName hello my name is {firstName}
+GetFirstName it is {firstName}
+GetFirstName nice to meet you my name is {firstName}
