@@ -137,7 +137,7 @@ function setFirstName(intent, session, callback) {
     var shouldEndSession = false;
     var speechOutput = "";
 
-    console.log ("setFirstName -> firstName: " + firstName);
+    console.log ("setFirstName -> firstName: " + JSON.stringify(firstName));
 
     if (firstName) {
         var myFirstName = firstName.value;
