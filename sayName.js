@@ -143,7 +143,7 @@ function setFirstName(intent, session, callback) {
         var myFirstName = firstName.value;
         sessionAttributes = createFirstNameAttributes(myFirstName);
         speechOutput = "I now know your name is " + myFirstName;
-        repromptText = "Tell me your name so that I can tell something about yourself.";
+        repromptText = "Tell me your name so that I can tell you something about your life.";
     } else {
         speechOutput = "What?. Please try again";
         repromptText = "I'm not sure what your name is, please tell me your name by saying my name is Fred. ";
@@ -155,6 +155,7 @@ function setFirstName(intent, session, callback) {
 
 function createFirstNameAttributes(myFirstName) {
     return {
+        console.log ("createFirstNameAttributes -> myFirstName: " + myFirstName);
         myFirstName: myFirstName
     };
 }
