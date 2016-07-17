@@ -78,10 +78,10 @@ function onIntent(intentRequest, session, callback) {
         intentName = intentRequest.intent.name;
 
     // Dispatch to your skill's intent handlers
-    if ("firstName" === intentName) {
-        setFirstName(intent, session, callback);
-    } else if ("whatsMyName" === intentName) {
-        whatsMyName(intent, session, callback);
+    if ("MyColorIsIntent" === intentName) {
+        setColorInSession(intent, session, callback);
+    } else if ("WhatsMyColorIntent" === intentName) {
+        getColorFromSession(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -107,10 +107,12 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "Welcome";
-    var speechOutput = "Hello Fellow Gap Employee, please tell me your name.";
+    var speechOutput = "Welcome to the Alexa Skills Kit sample. " +
+        "Please tell me your favorite color by saying, my favorite color is red";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
-    var repromptText = "What is your name already.";
+    var repromptText = "Please tell me your favorite color by saying, " +
+        "my favorite color is red";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
@@ -119,7 +121,7 @@ function getWelcomeResponse(callback) {
 
 function handleSessionEndRequest(callback) {
     var cardTitle = "Session Ended";
-    var speechOutput = "Get back to work!";
+    var speechOutput = "Thank you for trying the Alexa Skills Kit sample. Have a nice day!";
     // Setting this to true ends the session and exits the skill.
     var shouldEndSession = true;
 
@@ -127,54 +129,55 @@ function handleSessionEndRequest(callback) {
 }
 
 /**
- * Sets the name in the session and prepares the speech to reply to the user.
+ * Sets the color in the session and prepares the speech to reply to the user.
  */
-function setFirstName(intent, session, callback) {
+function setColorInSession(intent, session, callback) {
     var cardTitle = intent.name;
-    var firstName = intent.slots.myFirstName;
+    var favoriteColorSlot = intent.slots.Color;
     var repromptText = "";
     var sessionAttributes = {};
     var shouldEndSession = false;
     var speechOutput = "";
 
-    console.log ("setFirstName -> firstName: " + firstName);
-
-    if (firstName) {
-        var myFirstName = firstName.value;
-        sessionAttributes = createFirstNameAttributes(myFirstName);
-        speechOutput = "I now know your name is " + myFirstName;
-        repromptText = "Tell me your name so that I can tell you something about your life.";
+    if (favoriteColorSlot) {
+        var favoriteColor = favoriteColorSlot.value;
+        sessionAttributes = createFavoriteColorAttributes(favoriteColor);
+        speechOutput = "I now know your favorite color is " + favoriteColor + ". You can ask me " +
+            "your favorite color by saying, what's my favorite color?";
+        repromptText = "You can ask me your favorite color by saying, what's my favorite color?";
     } else {
-        speechOutput = "What?. Please try again";
-        repromptText = "I'm not sure what your name is, please tell me your name by saying my name is Fred. ";
+        speechOutput = "I'm not sure what your favorite color is. Please try again";
+        repromptText = "I'm not sure what your favorite color is. You can tell me your " +
+            "favorite color by saying, my favorite color is red";
     }
 
     callback(sessionAttributes,
          buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
-function createFirstNameAttributes(myFirstName) {
+function createFavoriteColorAttributes(favoriteColor) {
     return {
-        myFirstName: myFirstName
+        favoriteColor: favoriteColor
     };
 }
 
-function whatsMyName(intent, session, callback) {
-    var myfirstName;
+function getColorFromSession(intent, session, callback) {
+    var favoriteColor;
     var repromptText = null;
     var sessionAttributes = {};
     var shouldEndSession = false;
     var speechOutput = "";
 
     if (session.attributes) {
-        myfirstName = session.attributes.myfirstName;
+        favoriteColor = session.attributes.favoriteColor;
     }
 
-    if (myfirstName) {
-        speechOutput = "Your name is " + myfirstName + ". Goodbye.";
+    if (favoriteColor) {
+        speechOutput = "Your favorite color is " + favoriteColor + ". Goodbye.";
         shouldEndSession = true;
     } else {
-        speechOutput = "I'm not sure what your name is, you can say, my name is Billy Bob.";
+        speechOutput = "I'm not sure what your favorite color is, you can say, my favorite color " +
+            " is red";
     }
 
     // Setting repromptText to null signifies that we do not want to reprompt the user.
