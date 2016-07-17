@@ -138,7 +138,7 @@ function setFirstName(intent, session, callback) {
     console.log ("setFirstName -> firstName: " + firstName);
 
     if (firstName) {
-        var myFirstName = myFirstName.value;
+        var myFirstName = firstName.value;
         sessionAttributes = createFirstNameAttributes(myFirstName);
         speechOutput = "I now know your name is " + myFirstName;
         repromptText = "Tell me your name so that I can tell something about yourself.";
