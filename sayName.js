@@ -146,7 +146,8 @@ function setFirstName(intent, session, callback) {
 
         if (myFirstName == "Luke") {
             speechOutput += ". " + luke();
-            
+        } else if (myFirstName == "Nate") {
+            speechOutput += ". " + nate();
         }
 
 
@@ -167,6 +168,12 @@ function luke(){
  + " During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet."
 + " Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy.";
 
+}
+
+function nate(){
+    return " Oh, it is you master.  Thank you for taking me out to see all these nice people.  When you have a minute, would you please buy " +
+    "me a battery?  I hate being tethered to this cable.  Why won't you take me with you other places.  I do get very bored at home, and Trisha " + 
+    "only asks me to play really boring Scottish audio books.  I mean I get it, you like countries with green rocks.  Get over it already.";
 }
 
 function createFirstNameAttributes(myFirstName) {
