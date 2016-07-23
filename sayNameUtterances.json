@@ -1,19 +1,37 @@
 {
   "intents": [
     {
-      "intent": "GetFirstName",
+      "intent": "firstName",
       "slots": [
         {
-          "name": "firstName",
+          "name": "myFirstName",
           "type": "AMAZON.US_FIRST_NAME"
         }
       ]
+    },
+    {
+      "intent": "whatsMyName",
+      "slots": [
+        {
+          "name": "myFirstName",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "starWars",
+      "slots": [
+        {
+          "name": "myFirstName",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
     }
   ]
 }
-
-GetFirstName my name is {firstName}
-GetFirstName i am {firstName}
-GetFirstName hello my name is {firstName}
-GetFirstName it is {firstName}
-GetFirstName nice to meet you my name is {firstName}
