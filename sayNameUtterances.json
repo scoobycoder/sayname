@@ -19,15 +19,6 @@
       ]
     },
     {
-      "intent": "starWars",
-      "slots": [
-        {
-          "name": "myFirstName",
-          "type": "AMAZON.US_FIRST_NAME"
-        }
-      ]
-    },
-    {
       "intent": "AMAZON.HelpIntent"
     },
     {
@@ -35,3 +26,10 @@
     }
   ]
 }
+
+firstName my name is {myFirstName}
+firstName i am {myFirstName}
+firstName hello my name is {myFirstName}
+firstName it is {myFirstName}
+firstName nice to meet you my name is {myFirstName}
+whatsMyName what is my name

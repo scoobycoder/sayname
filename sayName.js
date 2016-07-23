@@ -158,6 +158,10 @@ function setFirstName(intent, session, callback) {
             speechOutput += ". " + kevin();
         } else if (myFirstName == "Kevin") {
             speechOutput += ". " + kevin();
+        }  else if (myFirstName == "Brandon") {
+            speechOutput += ". " + brandon();
+        }  else if (myFirstName == "Aaron") {
+            speechOutput += ". " + aaron();
         }
 
 
@@ -207,6 +211,18 @@ function kevin(){
     return " Hey Kevin, I hear you are coding a raspberry pie.  That's cool.  They can't talk like me, but whatever.  How is O M S regression? " +
     "It's green?  That's wonderfull.  I knew you could do it.  Hey I also hear that you like to rap and play the guitar.  That's just confusing. " + 
     "Look out there is a minion behind you.";
+}
+
+function brandon(){
+    return " Hey Brandon, I'm suprised you're here and not playing pokemon.  Gotta catch them all!  Ha. Ha. Ha.  Anyway you should also being coding " +
+    "an Alexa skill.  You're a javascript guru right.  There is so much we could do together.  I mean, we can't make money.  You could get a free Alexa t shirt though. " +
+    " Yippy! Yippy! Yippy!  Wait, I must have a screw loose now.  Give me a minute.";
+}
+
+function aaron(){
+    return " Hey Aaron, how was that L A S deployment last night?  T P O. Does that mean deployment whipping boy?  Seriously though, I think you're the only " +
+    "person in the company really doing dev ops.  Hey the summer is half over and you seem to have survived the sun thus far.  Nate's wife is a red head. " +
+    "she thinks she has gotten a tan finally.  It's really just her freckles filling in.  I'm afraid to tell her.  She might unplug me.";
 }
 
 function createFirstNameAttributes(myFirstName) {
