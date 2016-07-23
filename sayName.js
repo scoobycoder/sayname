@@ -82,6 +82,9 @@ function onIntent(intentRequest, session, callback) {
         setFirstName(intent, session, callback);
     } else if ("whatsMyName" === intentName) {
         whatsMyName(intent, session, callback);
+    } else if ("luke" == intentName) {
+        starWars(intent, session, callback);
+    }    
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -99,6 +102,23 @@ function onSessionEnded(sessionEndedRequest, session) {
     console.log("onSessionEnded requestId=" + sessionEndedRequest.requestId +
         ", sessionId=" + session.sessionId);
     // Add cleanup logic here
+}
+
+function starWars(intent, session, callback) {
+    var cardTitle = intent.name;
+    var firstName = intent.slots.myFirstName;
+    var repromptText = "";
+    var sessionAttributes = {};
+    var shouldEndSession = false;
+    var speechOutput = "";
+
+    sessionAttributes = createFirstNameAttributes(myFirstName);
+    speechOutput = "It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.
+Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...."
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 
 // --------------- Functions that control the skill's behavior -----------------------
