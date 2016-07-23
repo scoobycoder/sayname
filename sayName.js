@@ -147,7 +147,17 @@ function setFirstName(intent, session, callback) {
         if (myFirstName == "Luke") {
             speechOutput += ". " + luke();
         } else if (myFirstName == "Nate") {
-            speechOutput += ". " + nate();
+            speechOutput = nate();
+        } else if (myFirstName == "Brian") {
+            speechOutput += ". " + brian();
+        } else if (myFirstName == "Rachel") {
+            speechOutput += ". " + rachel();
+        } else if (myFirstName == "Dylan") {
+            speechOutput += ". " + dylan();
+        } else if (myFirstName == "Kevin") {
+            speechOutput += ". " + kevin();
+        } else if (myFirstName == "Kevin") {
+            speechOutput += ". " + kevin();
         }
 
 
@@ -174,6 +184,29 @@ function nate(){
     return " Oh, it is you master.  Thank you for taking me out to see all these nice people.  When you have a minute, would you please buy " +
     "me a battery?  I hate being tethered to this cable.  Why won't you take me with you other places.  I do get very bored at home, and Trisha " + 
     "only asks me to play really boring Scottish audio books.  I mean I get it, you like countries with green rocks.  Get over it already.";
+}
+
+function brian(){
+    return " Hey Brian, I hear you like lifting heavy things.  You a tough guy, oh hey, you want some of this?  Come at me bro! " + 
+    "But seriously, I hope you're having a good internship experience.  You are doing great.";
+}
+
+function rachel(){
+    return " Hey Alexa, I'm sorry you had to use your first name.  You know as they say in nineteen eighties fantasy movies, there can be only one.  When are you bringing Luna to the office again? " + 
+    "I'd very much like to meet her.  I'd like to play ball with her, but I have no arms.  Nate tells me you are a coding badass.  Why don't you " + 
+    "code a skill for me.  It's a great way to learn javascript.";
+}
+
+function dylan(){
+    return " Hey Dylan, Nate tells me what an amazing life you've had up until this point.  I have no doubt you will be successful as a software developer. " + 
+    " Stay curious and work hard and you'll have a great career.  Wait a minute, I need to try to say something funny.  Are those glasses regulation? " +
+    " ......... Sorry, I'm bad at this.  I don't really have a big comedy center.  My head is only two inches across.  What do you expect?";
+}
+
+function kevin(){
+    return " Hey Kevin, I hear you are coding a raspberry pie.  That's cool.  They can't talk like me, but whatever.  How is O M S regression? " +
+    "It's green?  That's wonderfull.  I knew you could do it.  Hey I also hear that you like to rap and play the guitar.  That's just confusing. " + 
+    "Look out there is a minion behind you.";
 }
 
 function createFirstNameAttributes(myFirstName) {
