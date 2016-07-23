@@ -169,7 +169,7 @@ function whatsMyName(intent, session, callback) {
     var speechOutput = "";
 
     if (session.attributes) {
-        myfirstName = session.attributes.myfirstName;
+        myfirstName = session.attributes.myFirstName;
     }
 
     if (myfirstName) {
