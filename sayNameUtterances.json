@@ -18,6 +18,22 @@
         }
       ]
     },
+    {  "intent": "destruct",
+      "slots": [
+        {
+          "name": "sequenceCode",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    },
+    {  "intent": "code",
+      "slots": [
+        {
+          "name": "destructCode",
+          "type": "SELF_DESTRUCT_CODES"
+        }
+      ]
+    },    
     {
       "intent": "AMAZON.HelpIntent"
     },
@@ -33,3 +49,5 @@ firstName hello my name is {myFirstName}
 firstName it is {myFirstName}
 firstName nice to meet you my name is {myFirstName}
 whatsMyName what is my name
+destruct {sequenceCode}
+code {destructCode}

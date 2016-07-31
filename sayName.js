@@ -86,6 +86,8 @@ function onIntent(intentRequest, session, callback) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
         handleSessionEndRequest(callback);
+    } else if ("destruct" === intentName) {
+        selfDestruct(intent, session, callback);
     } else {
         throw "Invalid intent";
     }
@@ -124,6 +126,62 @@ function handleSessionEndRequest(callback) {
     var shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+}
+
+/**
+ * Sets the name in the session and prepares the speech to reply to the user.
+ */
+function selfDestruct(intent, session, callback) {
+    var repromptText = "";
+    var sequenceCode = intent.slots.sequenceCode;
+    var sessionAttributes = {};
+    var shouldEndSession = false;
+    var speechOutput = "";
+
+    console.log ("selfDestruct -> sequenceCode: " + JSON.stringify(sequenceCode));
+
+    if (sequenceCode) {
+        var mySequenceCode = sequenceCode.value;
+        sessionAttributes = createSequenceCode(mySequenceCode);
+    }
+
+    repromptText = "Awaiting Command.";
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
+}
+
+function createSequenceCode(mySequenceCode) {
+    return {
+        mySequenceCode: mySequenceCode
+    };
+}
+
+function selfDestructCode(intent, session, callback) {
+    var mySequenceCode;
+    var repromptText = "";
+    var destructCode = intent.slots.destructCode;
+    var sessionAttributes = {};
+    var shouldEndSession = false;
+    var speechOutput = "";
+
+    if (session.attributes) {
+        mySequenceCode = session.attributes.mySequenceCode;
+    }
+
+    if (mySequenceCode == "Destruct sequence one") {
+
+        if (destructCode == "one one A") {
+            speechOutput = "Self destruct code one one A verified and correct. Sequence one complete."
+        } else {
+            speechOutput = "Self destruct code incorrect."
+        }
+
+        repromptText = "Enter self destruct code";        
+    }
+
+    callback(sessionAttributes,
+         buildSpeechletResponse(intent.name, speechOutput, repromptText, shouldEndSession));
 }
 
 /**
