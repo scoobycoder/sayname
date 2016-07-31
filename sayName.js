@@ -128,9 +128,6 @@ function handleSessionEndRequest(callback) {
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
 
-/**
- * Sets the name in the session and prepares the speech to reply to the user.
- */
 function selfDestruct(intent, session, callback) {
     var repromptText = "";
     var sequenceCode = intent.slots.sequenceCode;
