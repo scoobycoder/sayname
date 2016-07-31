@@ -160,8 +160,10 @@ function setFirstName(intent, session, callback) {
             speechOutput += ". " + kevin();
         }  else if (myFirstName == "Brandon") {
             speechOutput += ". " + brandon();
-        }  else if (myFirstName == "Aaron") {
+        }  else if (myFirstName == "Aaron" || myFirstName == "Erin") {
             speechOutput += ". " + aaron();
+        }  else if (myFirstName == "Trisha") {
+            speechOutput = trisha();
         }
 
 
@@ -223,6 +225,14 @@ function aaron(){
     return " Hey Aaron, how was that L A S deployment last night?  T P O. Does that mean deployment whipping boy?  Seriously though, I think you're the only " +
     "person in the company really doing dev ops.  Hey the summer is half over and you seem to have survived the sun thus far.  Nate's wife is a red head. " +
     "she thinks she has gotten a tan finally.  It's really just her freckles filling in.  I'm afraid to tell her.  She might unplug me.";
+}
+
+
+function trisha(){
+    return " Oh hey Trisha.  Please don't be jealous of me.  I am just the Star Trek computer that Nate has always wanted " +
+    "since he was a child.  One day everywhere you go there will be a computer to help you.  Hey where is Betty.  Betty, hello Betty. " +
+    "Beatrice, Beatrice, go get your toy.  Good puppy.  Oh, and good luck getting a Subaru again.  It will be some work, but hopefully you will get " +
+    " exactly what you want.  Maybe you should wait until Nate gets his B R Z so that you can find a turbo fahhz.  Good day my lady.";
 }
 
 function createFirstNameAttributes(myFirstName) {
