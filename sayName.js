@@ -88,6 +88,8 @@ function onIntent(intentRequest, session, callback) {
         handleSessionEndRequest(callback);
     } else if ("destruct" === intentName) {
         selfDestruct(intent, session, callback);
+    } else if ("code" === intentName) {
+        selfDestructCode(intent, session, callback);
     } else {
         throw "Invalid intent";
     }
@@ -140,6 +142,7 @@ function selfDestruct(intent, session, callback) {
     if (sequenceCode) {
         var mySequenceCode = sequenceCode.value;
         sessionAttributes = createSequenceCode(mySequenceCode);
+        console.log ("selfDestruct -> Inside sequenceCode: " + JSON.stringify(sequenceCode));        
     }
 
     repromptText = "Awaiting Command.";
@@ -162,15 +165,23 @@ function selfDestructCode(intent, session, callback) {
     var shouldEndSession = false;
     var speechOutput = "";
 
+    console.log ("selfDestructCode -> Inside selfDestructCode: " + JSON.stringify(destructCode));        
+
     if (session.attributes) {
         mySequenceCode = session.attributes.mySequenceCode;
+        console.log ("selfDestructCode -> Session Attributes mySequenceCode: " + mySequenceCode);        
     }
 
-    if (mySequenceCode == "Destruct sequence one") {
+    if (mySequenceCode == "1") {
 
-        if (destructCode == "one one A") {
-            speechOutput = "Self destruct code one one A verified and correct. Sequence one complete."
+        console.log ("selfDestructCode -> Inside mySequenceCode Check: " + mySequenceCode); 
+
+        if (destructCode.value == "11 a") {
+            speechOutput = "Voice and code one one A verified and correct. Sequence one complete. ";
+            speechOutput += "Self destruct enabled. 10 minute silent countdown.  There will be no further warnings.";
+            shouldEndSession = true;
         } else {
+            console.log ("selfDestructCode -> Destruct Code Incorrect, destructCode: " + destructCode); 
             speechOutput = "Self destruct code incorrect."
         }
 

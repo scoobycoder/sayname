@@ -22,7 +22,7 @@
       "slots": [
         {
           "name": "sequenceCode",
-          "type": "AMAZON.US_FIRST_NAME"
+          "type": "CODE_SEQUENCE"
         }
       ]
     },
@@ -49,5 +49,6 @@ firstName hello my name is {myFirstName}
 firstName it is {myFirstName}
 firstName nice to meet you my name is {myFirstName}
 whatsMyName what is my name
+destruct this is commander Halterman {sequenceCode}
 destruct {sequenceCode}
 code {destructCode}
