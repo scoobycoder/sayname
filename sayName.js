@@ -1,7 +1,5 @@
 var express = require("express");
-
 var destruct = new destruct();  
-destruct.destructMe();  
 
 exports.handler = function (event, context) {
     try {
