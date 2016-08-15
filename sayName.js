@@ -160,6 +160,7 @@ function createSequenceCode(mySequenceCode) {
 function selfDestructCode(intent, session, callback) {
     var mySequenceCode;
     var repromptText = "";
+    var promptTest = "Enter self destruct code";  
     var destructCode = intent.slots.destructCode;
     var sessionAttributes = {};
     var shouldEndSession = false;
@@ -176,7 +177,9 @@ function selfDestructCode(intent, session, callback) {
 
         console.log ("selfDestructCode -> Inside mySequenceCode Check: " + mySequenceCode); 
 
-        if (destructCode.value == "11 a") {
+        finalCode = destructCode.value
+
+        if (finalCode == "11 a" || finalCode == "code 11 a" || finalCode == "118") {
             speechOutput = "Voice and code one one A verified and correct. Sequence one complete. ";
             speechOutput += "Self destruct enabled. 10 minute silent countdown.  There will be no further warnings.";
             shouldEndSession = true;
