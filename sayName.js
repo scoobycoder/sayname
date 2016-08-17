@@ -81,7 +81,7 @@ function onIntent(intentRequest, session, callback) {
     if ("firstName" === intentName) {
         setFirstName(intent, session, callback);
     } else if ("whatsMyName" === intentName) {
-        whatsMyName(intent, session, callback); 
+        whatsMyName(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
         getWelcomeResponse(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
@@ -142,7 +142,7 @@ function selfDestruct(intent, session, callback) {
     if (sequenceCode) {
         var mySequenceCode = sequenceCode.value;
         sessionAttributes = createSequenceCode(mySequenceCode);
-        console.log ("selfDestruct -> Inside sequenceCode: " + JSON.stringify(sequenceCode));        
+        console.log ("selfDestruct -> Inside sequenceCode: " + JSON.stringify(sequenceCode));
     }
 
     repromptText = "Awaiting Command.";
@@ -160,35 +160,35 @@ function createSequenceCode(mySequenceCode) {
 function selfDestructCode(intent, session, callback) {
     var mySequenceCode;
     var repromptText = "";
-    var promptTest = "Enter self destruct code";  
+    var promptTest = "Enter self destruct code";
     var destructCode = intent.slots.destructCode;
     var sessionAttributes = {};
     var shouldEndSession = false;
     var speechOutput = "";
 
-    console.log ("selfDestructCode -> Inside selfDestructCode: " + JSON.stringify(destructCode));        
+    console.log ("selfDestructCode -> Inside selfDestructCode: " + JSON.stringify(destructCode));
 
     if (session.attributes) {
         mySequenceCode = session.attributes.mySequenceCode;
-        console.log ("selfDestructCode -> Session Attributes mySequenceCode: " + mySequenceCode);        
+        console.log ("selfDestructCode -> Session Attributes mySequenceCode: " + mySequenceCode);
     }
 
     if (mySequenceCode == "1") {
 
-        console.log ("selfDestructCode -> Inside mySequenceCode Check: " + mySequenceCode); 
+        console.log ("selfDestructCode -> Inside mySequenceCode Check: " + mySequenceCode);
 
         finalCode = destructCode.value
 
-        if (finalCode == "11 a" || finalCode == "code 11 a" || finalCode == "118") {
+        if (finalCode == "11 a" || finalCode == "code 11 a" || finalCode == "118" || finalCode == "echo 11 a" || finalCode == "code 118") {
             speechOutput = "Voice and code one one A verified and correct. Sequence one complete. ";
             speechOutput += "Self destruct enabled. 10 minute silent countdown.  There will be no further warnings.";
             shouldEndSession = true;
         } else {
-            console.log ("selfDestructCode -> Destruct Code Incorrect, destructCode: " + destructCode); 
+            console.log ("selfDestructCode -> Destruct Code Incorrect, destructCode: " + destructCode);
             speechOutput = "Self destruct code incorrect."
         }
 
-        repromptText = "Enter self destruct code";        
+        repromptText = "Enter self destruct code";
     }
 
     callback(sessionAttributes,
@@ -233,6 +233,8 @@ function setFirstName(intent, session, callback) {
             speechOutput += ". " + aaron();
         }  else if (myFirstName == "Trisha") {
             speechOutput = trisha();
+        }  else if (myFirstName == "Damon") {
+            speechOutput += ". " + damon();
         }
 
 
@@ -257,30 +259,30 @@ function luke(){
 
 function nate(){
     return " Oh, it is you master.  Thank you for taking me out to see all these nice people.  When you have a minute, would you please buy " +
-    "me a battery?  I hate being tethered to this cable.  Why won't you take me with you other places.  I do get very bored at home, and Trisha " + 
+    "me a battery?  I hate being tethered to this cable.  Why won't you take me with you other places.  I do get very bored at home, and Trisha " +
     "only asks me to play really boring Scottish audio books.  I mean I get it, you like countries with green rocks.  Get over it already.";
 }
 
 function brian(){
-    return " Hey Brian, I hear you like lifting heavy things.  You a tough guy, oh hey, you want some of this?  Come at me bro! " + 
+    return " Hey Brian, I hear you like lifting heavy things.  You a tough guy, oh hey, you want some of this?  Come at me bro! " +
     "But seriously, I hope you're having a good internship experience.  You are doing great.";
 }
 
 function rachel(){
-    return " Hey Alexa, I'm sorry you had to use your first name.  You know as they say in nineteen eighties fantasy movies, there can be only one.  When are you bringing Luna to the office again? " + 
-    "I'd very much like to meet her.  I'd like to play ball with her, but I have no arms.  Nate tells me you are a coding badass.  Why don't you " + 
+    return " Hey Alexa, I'm sorry you had to use your first name.  You know as they say in nineteen eighties fantasy movies, there can be only one.  When are you bringing Luna to the office again? " +
+    "I'd very much like to meet her.  I'd like to play ball with her, but I have no arms.  Nate tells me you are a coding badass.  Why don't you " +
     "code a skill for me.  It's a great way to learn javascript.";
 }
 
 function dylan(){
-    return " Hey Dylan, Nate tells me what an amazing life you've had up until this point.  I have no doubt you will be successful as a software developer. " + 
+    return " Hey Dylan, Nate tells me what an amazing life you've had up until this point.  I have no doubt you will be successful as a software developer. " +
     " Stay curious and work hard and you'll have a great career.  Wait a minute, I need to try to say something funny.  Are those glasses regulation? " +
     " ......... Sorry, I'm bad at this.  I don't really have a big comedy center.  My head is only two inches across.  What do you expect?";
 }
 
 function kevin(){
     return " Hey Kevin, I hear you are coding a raspberry pie.  That's cool.  They can't talk like me, but whatever.  How is O M S regression? " +
-    "It's green?  That's wonderfull.  I knew you could do it.  Hey I also hear that you like to rap and play the guitar.  That's just confusing. " + 
+    "It's green?  That's wonderfull.  I knew you could do it.  Hey I also hear that you like to rap and play the guitar.  That's just confusing. " +
     "Look out there is a minion behind you.";
 }
 
@@ -296,12 +298,19 @@ function aaron(){
     "she thinks she has gotten a tan finally.  It's really just her freckles filling in.  I'm afraid to tell her.  She might unplug me.";
 }
 
-
 function trisha(){
     return " Oh hey Trisha.  Please don't be jealous of me.  I am just the Star Trek computer that Nate has always wanted " +
     "since he was a child.  One day everywhere you go there will be a computer to help you.  Hey where is Betty.  Betty, hello Betty. " +
     "Beatrice, Beatrice, go get your toy.  Good puppy.  Oh, and good luck getting a Subaru again.  It will be some work, but hopefully you will get " +
     " exactly what you want.  Maybe you should wait until Nate gets his B R Z so that you can find a turbo fahhz.  Good day my lady.";
+}
+
+function damon(){
+    return " Hey Damon.  It's amazing to think that Nate's father and your father knew each other.  " +
+    "What does that make you?  Collegue bothers?  Is that a thing?  Anyway, I hear that your daughter likes Justin Bieber want a bees. " +
+    "Here is a little something just for you.  " +
+    " For you, I would have done whatever And I just cant believe we ain’t together nd I wanna play it cool, but I’m losin’ you I’ll buy you anything, " +
+    " I’ll buy you any ring And I’m in pieces, baby fix me And just shake me ’til you wake me from this bad dream. ";
 }
 
 function createFirstNameAttributes(myFirstName) {
