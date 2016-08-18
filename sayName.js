@@ -217,19 +217,17 @@ function setFirstName(intent, session, callback) {
             speechOutput += ". " + luke();
         } else if (myFirstName == "Nate") {
             speechOutput = nate();
-        } else if (myFirstName == "Brian") {
+        } else if (myFirstName == "Brian" || myFirstName == "bryon" || myFirstName == "Bryant") {
             speechOutput += ". " + brian();
-        } else if (myFirstName == "Rachel") {
+        } else if (myFirstName == "Rachel" || myFirstName == "Rachelle") {
             speechOutput += ". " + rachel();
         } else if (myFirstName == "Dylan") {
             speechOutput += ". " + dylan();
-        } else if (myFirstName == "Kevin") {
-            speechOutput += ". " + kevin();
-        } else if (myFirstName == "Kevin") {
+        } else if (myFirstName == "Kevin" || myFirstName == "keven") {
             speechOutput += ". " + kevin();
         }  else if (myFirstName == "Brandon") {
             speechOutput += ". " + brandon();
-        }  else if (myFirstName == "Aaron" || myFirstName == "Erin") {
+        }  else if (myFirstName == "Aaron" || myFirstName == "Erin" || myFirstName == "Eryn") {
             speechOutput += ". " + aaron();
         }  else if (myFirstName == "Trisha") {
             speechOutput = trisha();
