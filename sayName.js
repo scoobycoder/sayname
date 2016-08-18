@@ -305,7 +305,7 @@ function trisha(){
 
 function damon(){
     return " Hey Damon.  It's amazing to think that Nate's father and your father knew each other.  " +
-    "What does that make you?  Collegue bothers?  Is that a thing?  Anyway, I hear that your daughter likes Justin Bieber want a bees. " +
+    "What does that make you?  Colleague bothers?  Is that a thing?  Anyway, I hear that your daughter likes Justin Bieber want a bees. " +
     "Here is a little something just for you.  " +
     " For you, I would have done whatever And I just cant believe we ain’t together nd I wanna play it cool, but I’m losin’ you I’ll buy you anything, " +
     " I’ll buy you any ring And I’m in pieces, baby fix me And just shake me ’til you wake me from this bad dream. ";
